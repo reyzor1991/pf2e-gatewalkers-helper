@@ -134,6 +134,20 @@ Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
 });
 Hooks.on('pf2e.restForTheNight', async (actor) => {
     await actor.setFlag(moduleName, "deviantState", deviantState);
+
+    const energeticMeltdown = hasEffectBySourceId(actor, "Compendium.pf2e.feat-effects.Item.0AD7BiKjT8a6Uh92");
+    const encroachingPresence = hasEffectBySourceId(actor, "Compendium.pf2e.feat-effects.Item.cqgbTZCvqaSvtQdz");
+    const strainedMetabolism = hasEffectBySourceId(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z");
+    if (energeticMeltdown) {
+        energeticMeltdown.delete()
+    }
+    if (encroachingPresence) {
+        encroachingPresence.delete()
+    }
+    if (strainedMetabolism) {
+        strainedMetabolism.delete()
+    }
+
 });
 
 console.log("PF2e Gatewalkers Helper | Initialized");
