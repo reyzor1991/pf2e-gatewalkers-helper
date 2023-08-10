@@ -98,12 +98,11 @@ async function eerieFlicker(actor) {
 async function handleEffect(actor, uuid, backlash) {
     const curEffect = hasEffectBySourceId(actor, uuid);
     if (curEffect) {
-        await curEffect.update({"system.badge.value": backlash})
-    } else {
-        const eff = (await fromUuid(uuid)).toObject()
-        eff.system.badge.value = backlash;
-        await actor.createEmbeddedDocuments("Item", [eff]);
+        await curEffect.delete()
     }
+    const eff = (await fromUuid(uuid)).toObject()
+    eff.system.badge.value = backlash;
+    await actor.createEmbeddedDocuments("Item", [eff]);
 }
 
 async function attackRoll(message) {
