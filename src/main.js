@@ -149,4 +149,26 @@ Hooks.on('pf2e.restForTheNight', async (actor) => {
 
 });
 
+Hooks.on('getActorSheetHeaderButtons', getActorSheetHeaderButtons);
+
+function getActorSheetHeaderButtons(app, buttons) {
+    if (!game.user.isGM) {return;}
+    if ("character" != app?.actor?.type) {return;}
+
+    const state = app.actor.getFlag(moduleName, "deviantState") ?? deviantState;
+    const actorUuid = app.actor.uuid;
+
+    buttons.unshift({
+        label: "Gatewalker Stages",
+        icon: "fas fa-torii-gate",
+        class: moduleName,
+        onclick: () => {
+            (new Gate({state, actorUuid}, async (actorUuid, state) => {
+                await (await fromUuid(actorUuid)).setFlag(moduleName, "deviantState", state);
+            })).render(true);
+        }
+    });
+}
+
+
 console.log("PF2e Gatewalkers Helper | Initialized");
