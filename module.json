@@ -21,8 +21,10 @@
     "minimum": "11",
     "verified": "11.308"
   },
+  "url": "https://www.patreon.com/Reyzor1991",
   "manifest": "https://drive.usercontent.google.com/download?id=1EnfxMyKIhaO_OMqR13dO4VKb9TDEbZ0q",
   "download": "https://drive.usercontent.google.com/download?id=1nNTjJ9DrYbQ0Ca8l7XJM-0jib-8CuQVT",
+  "changelog": "https://drive.google.com/file/d/1nAf7CE8hKCw0GP4P8BWyAShkSqVhltg3",
   "relationships": {
     "systems": [
       {
