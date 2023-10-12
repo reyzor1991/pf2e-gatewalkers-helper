@@ -70,7 +70,7 @@ async function handleState(actor, effect) {
 
 
 async function titanSwing(actor) {
-    if (actor?.flags?.pf2e?.rollOptions?.['damage-roll']?.['titan-swing']) {
+    if (actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
         handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
     }
 }
@@ -111,13 +111,10 @@ async function attackRoll(message) {
 
 Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
     const mType = message?.flags?.pf2e?.context?.type;
-    switch (mType) {
-        case 'attack-roll':
-            attackRoll(message);
-            break;
-    }
 
-    if (message.item) {
+    if (mType === 'attack-roll') {
+        attackRoll(message);
+    } else if (message.item && message.content?.includes(message.item?.description) ) {
         if (message.item.slug === "ghostly-grasp-deviant") {
             ghostlyGrasp(message.actor)
         } else if (message.item.slug === "blasting-beams") {
