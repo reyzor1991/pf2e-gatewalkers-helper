@@ -96,6 +96,7 @@ async function eerieFlicker(actor) {
 }
 
 async function handleEffect(actor, uuid, backlash) {
+    if (!uuid) {return}
     const curEffect = hasEffectBySourceId(actor, uuid);
     if (curEffect) {
         await curEffect.delete()
@@ -125,6 +126,8 @@ Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
             consumeEnergy(message.actor)
         } else if (message.item.slug === "eerie-flicker") {
             eerieFlicker(message.actor)
+        } else if (message.item?.traits?.has('deviant')) {
+            handleState(message.actor, undefined)
         }
     }
 });

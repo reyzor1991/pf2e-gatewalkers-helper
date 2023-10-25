@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.6
+- Handle custom feat with Devian trait
+
 ## Version 0.0.5
 
 ### New feature
