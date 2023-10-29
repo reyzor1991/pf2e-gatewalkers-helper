@@ -68,13 +68,6 @@ async function handleState(actor, effect) {
     await actor.setFlag(moduleName, "deviantState", curState);
 }
 
-
-async function titanSwing(actor) {
-    if (actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
-        handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
-    }
-}
-
 async function boneSpikes(actor) {
     handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
 }
@@ -106,16 +99,12 @@ async function handleEffect(actor, uuid, backlash) {
     await actor.createEmbeddedDocuments("Item", [eff]);
 }
 
-async function attackRoll(message) {
-    titanSwing(message.actor);
-};
-
 Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
     const mType = message?.flags?.pf2e?.context?.type;
 
-    if (mType === 'attack-roll') {
-        attackRoll(message);
-    } else if (message.item && message.content?.includes(message.item?.description) ) {
+    if (mType === 'attack-roll' && actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
+        handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
+    } else if (message.item && message.content?.includes(message.item?.description)) {
         if (message.item.slug === "ghostly-grasp-deviant") {
             ghostlyGrasp(message.actor)
         } else if (message.item.slug === "blasting-beams") {
@@ -126,7 +115,7 @@ Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
             consumeEnergy(message.actor)
         } else if (message.item.slug === "eerie-flicker") {
             eerieFlicker(message.actor)
-        } else if (message.item?.traits?.has('deviant')) {
+        } else if (message.item?.traits?.has('deviant') && message.item.slug != "titan-swing") {
             handleState(message.actor, undefined)
         }
     }
