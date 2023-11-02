@@ -102,7 +102,7 @@ async function handleEffect(actor, uuid, backlash) {
 Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
     const mType = message?.flags?.pf2e?.context?.type;
 
-    if (mType === 'attack-roll' && actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
+    if (mType === 'attack-roll' && message.actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
         handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
     } else if (message.item && message.content?.includes(message.item?.description)) {
         if (message.item.slug === "ghostly-grasp-deviant") {

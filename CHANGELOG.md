@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.8
+- Fix handling titan swing
+
 ## Version 0.0.7
 - Fix handling deviant feats
 
