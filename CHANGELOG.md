@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.0.9
+- Handle effects of Strained Metabolism
+- Skip rerolls
+
 ## Version 0.0.8
 - Fix handling titan swing
 

@@ -1,5 +1,9 @@
 const moduleName = "pf2e-gatewalkers-helper";
 
+const strainedMetabolism = "Compendium.pf2e-gatewalkers-helper.effects.Item.tcgU03ee0rJbxBgS";
+const energeticMeltdown = "Compendium.pf2e.feat-effects.Item.0AD7BiKjT8a6Uh92";
+const encroachingPresence = "Compendium.pf2e.feat-effects.Item.cqgbTZCvqaSvtQdz";
+
 const deviantState = {
     canUse: true,
     stage: 1,
@@ -69,23 +73,23 @@ async function handleState(actor, effect) {
 }
 
 async function boneSpikes(actor) {
-    handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
+    handleState(actor, strainedMetabolism)
 }
 
 async function blastingBeams(actor) {
-    handleState(actor, "Compendium.pf2e.feat-effects.Item.0AD7BiKjT8a6Uh92")
+    handleState(actor, energeticMeltdown)
 }
 
 async function consumeEnergy(actor) {
-    handleState(actor, "Compendium.pf2e.feat-effects.Item.0AD7BiKjT8a6Uh92")
+    handleState(actor, energeticMeltdown)
 }
 
 async function ghostlyGrasp(actor) {
-    handleState(actor, "Compendium.pf2e.feat-effects.Item.cqgbTZCvqaSvtQdz")
+    handleState(actor, encroachingPresence)
 }
 
 async function eerieFlicker(actor) {
-    handleState(actor, "Compendium.pf2e.feat-effects.Item.cqgbTZCvqaSvtQdz")
+    handleState(actor, encroachingPresence)
 }
 
 async function handleEffect(actor, uuid, backlash) {
@@ -101,9 +105,10 @@ async function handleEffect(actor, uuid, backlash) {
 
 Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
     const mType = message?.flags?.pf2e?.context?.type;
+    if (message.isReroll) { return }
 
     if (mType === 'attack-roll' && message.actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
-        handleState(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z")
+        handleState(message.actor, strainedMetabolism)
     } else if (message.item && message.content?.includes(message.item?.description)) {
         if (message.item.slug === "ghostly-grasp-deviant") {
             ghostlyGrasp(message.actor)
@@ -123,17 +128,17 @@ Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
 Hooks.on('pf2e.restForTheNight', async (actor) => {
     await actor.setFlag(moduleName, "deviantState", deviantState);
 
-    const energeticMeltdown = hasEffectBySourceId(actor, "Compendium.pf2e.feat-effects.Item.0AD7BiKjT8a6Uh92");
-    const encroachingPresence = hasEffectBySourceId(actor, "Compendium.pf2e.feat-effects.Item.cqgbTZCvqaSvtQdz");
-    const strainedMetabolism = hasEffectBySourceId(actor, "Compendium.pf2e.feat-effects.Item.lZPbv3nBRWmfbs3z");
-    if (energeticMeltdown) {
-        energeticMeltdown.delete()
+    const energeticMeltdownEff = hasEffectBySourceId(actor, energeticMeltdown);
+    const encroachingPresenceEff = hasEffectBySourceId(actor, encroachingPresence);
+    const strainedMetabolismEff = hasEffectBySourceId(actor, strainedMetabolism);
+    if (energeticMeltdownEff) {
+        energeticMeltdownEff.delete()
     }
-    if (encroachingPresence) {
-        encroachingPresence.delete()
+    if (encroachingPresenceEff) {
+        encroachingPresenceEff.delete()
     }
-    if (strainedMetabolism) {
-        strainedMetabolism.delete()
+    if (strainedMetabolismEff) {
+        strainedMetabolismEff.delete()
     }
 
 });

@@ -2,7 +2,7 @@
   "id": "pf2e-gatewalkers-helper",
   "title": "PF2e Gatewalkers Helper",
   "description": "PF2e module improves interaction with deviant feats",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "authors": [
     {
       "name": "Reyzor",
@@ -15,7 +15,20 @@
     "pf2e-gatewalkers-helper.js"
   ],
   "styles": [],
-  "packs": [],
+  "packs": [
+    {
+      "label": "Gatewalkers - Effects",
+      "name": "effects",
+      "path": "packs/effects.db",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "type": "Item",
+      "flags": {}
+    }
+  ],
   "media": [],
   "compatibility": {
     "minimum": "11",
