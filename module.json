@@ -32,7 +32,7 @@
   "media": [],
   "compatibility": {
     "minimum": "11",
-    "verified": "11.315"
+    "verified": "11.308"
   },
   "url": "https://www.patreon.com/Reyzor1991",
   "manifest": "https://www.dropbox.com/scl/fi/byr8tr3n85vydymuwf86q/module.json?rlkey=b2i0a990440aq33v92glutzzy&dl=1",
@@ -46,7 +46,7 @@
         "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
         "compatibility": {
           "minimum": "5.0.2",
-          "verified": "5.13.6"
+          "verified": "5.5.1"
         }
       }
     ],
