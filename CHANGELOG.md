@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.10
+- Move to dropbox
+
 ## Version 0.0.9
 - Handle effects of Strained Metabolism
 - Skip rerolls
