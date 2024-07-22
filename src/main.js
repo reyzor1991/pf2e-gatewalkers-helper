@@ -25,7 +25,7 @@ function increaseBacklash(obj) {
 };
 
 async function rollDeviationCheck(stage) {
-    const checkRoll = await new Roll('1d20').roll({ async: true });
+    const checkRoll = await new Roll('1d20').roll();
 
     const dc = stage * 5;
     const isSuccess = checkRoll.result >= dc;
@@ -109,7 +109,7 @@ Hooks.on('preCreateChatMessage', async (message, user, _options, userId)=>{
 
     if (mType === 'attack-roll' && message.actor?.flags?.pf2e?.rollOptions?.['damage']?.['titan-swing']) {
         handleState(message.actor, strainedMetabolism)
-    } else if (message.item && message.content?.includes(message.item?.description)) {
+    } else if (Object.keys(message.flags.pf2e).length === 1 && message.content.includes('Awakening')) {
         if (message.item.slug === "ghostly-grasp-deviant") {
             ghostlyGrasp(message.actor)
         } else if (message.item.slug === "blasting-beams") {

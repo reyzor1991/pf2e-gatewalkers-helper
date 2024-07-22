@@ -2,7 +2,7 @@
   "id": "pf2e-gatewalkers-helper",
   "title": "PF2e Gatewalkers Helper",
   "description": "PF2e module improves interaction with deviant feats",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "authors": [
     {
       "name": "Reyzor",
@@ -32,7 +32,7 @@
   "media": [],
   "compatibility": {
     "minimum": "11",
-    "verified": "11.308"
+    "verified": "12.329"
   },
   "url": "https://www.patreon.com/Reyzor1991",
   "manifest": "https://www.dropbox.com/scl/fi/byr8tr3n85vydymuwf86q/module.json?rlkey=b2i0a990440aq33v92glutzzy&dl=1",
@@ -46,7 +46,7 @@
         "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
         "compatibility": {
           "minimum": "5.0.2",
-          "verified": "5.5.1"
+          "verified": "6.1.0"
         }
       }
     ],

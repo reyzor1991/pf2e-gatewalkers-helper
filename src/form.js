@@ -8,13 +8,13 @@ class Gate extends FormApplication {
     }
 
     getData() {
-        return mergeObject(super.getData(), {
+        return foundry.utils.mergeObject(super.getData(), {
             state: this.state
         });
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             title: "Gatewalker Stage Config",
             id: `${moduleName}-configure`,
             classes: [moduleName],

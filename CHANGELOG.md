@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.0
+- Update versions
+
 ## Version 0.0.10
 - Move to dropbox
 
