@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.1
+- Wiki
+
 ## Version 0.1.0
 - Update versions
 
