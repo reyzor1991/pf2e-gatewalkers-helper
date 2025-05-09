@@ -1,32 +1,56 @@
-class Gate extends FormApplication {
-
+class Gate extends foundry.applications.api.HandlebarsApplicationMixin(
+    foundry.applications.api.ApplicationV2
+) {
     constructor(options, callback) {
         super({});
-        this.state = options.state;
+        this.gwstate = options.state;
         this.actorUuid = options.actorUuid;
         this.callback = callback;
     }
 
-    getData() {
-        return foundry.utils.mergeObject(super.getData(), {
-            state: this.state
-        });
+    get title() {
+        return `Gatewalker Stage Config`;
     }
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            title: "Gatewalker Stage Config",
-            id: `${moduleName}-configure`,
-            classes: [moduleName],
-            template: "modules/pf2e-gatewalkers-helper/templates/form.hbs",
-            width: 500,
+    async _prepareContext(options) {
+        return {
+            state: this.gwstate
+        };
+    }
+
+    static PARTS = {
+        form: {
+            template: `modules/${moduleName}/templates/form.hbs`,
+        },
+        footer: {
+            template: `modules/${moduleName}/templates/save.hbs`,
+            scrollable: [''],
+        },
+    };
+
+
+    static DEFAULT_OPTIONS = {
+        id: `${moduleName}-configure`,
+        tag: "form",
+        form: {
+            handler: Gate.formHandler,
+            closeOnSubmit: true
+        },
+        actions: {},
+        position: {
             height: "auto",
-            closeOnSubmit: true,
-            resizable: true,
-        });
-    }
+            width: 500
+        },
+        window: {
+            icon: 'fas fa-note-sticky',
+            resizable: true
+        },
+        classes: [moduleName],
+    };
 
-    async _updateObject(_event, data) {
+    static async formHandler(event, form, formData) {
+        let data = formData.object;
+
         const newState = {
             stage: data.stage <= 0 ? 1 : Math.min(4, data.stage),
             backlash: data.backlash <= 0 ? 1 : Math.min(4, data.backlash),

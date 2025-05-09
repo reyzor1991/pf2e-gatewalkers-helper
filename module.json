@@ -2,7 +2,7 @@
   "id": "pf2e-gatewalkers-helper",
   "title": "PF2e Gatewalkers Helper",
   "description": "PF2e module improves interaction with deviant feats",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "authors": [
     {
       "name": "Reyzor",
@@ -31,12 +31,12 @@
   ],
   "media": [],
   "compatibility": {
-    "minimum": "11",
-    "verified": "12.329"
+    "minimum": "13.342",
+    "verified": "13.342"
   },
   "url": "https://github.com/reyzor1991/pf2e-wiki/wiki/PF2e-Gatewalkers-Helper",
-  "manifest": "https://www.dropbox.com/scl/fi/byr8tr3n85vydymuwf86q/module.json?rlkey=b2i0a990440aq33v92glutzzy&dl=1",
-  "download": "https://www.dropbox.com/scl/fi/kngm8p9fdm3wdgg1tekgt/pf2e-gatewalkers-helper.zip?rlkey=qcra8mqs6yvt7s7ls9i0f60oh&dl=1",
+  "manifest": "https://www.dropbox.com/scl/fi/9h0qwzrmmn3eh9z044dx2/module.json?rlkey=xqgp1ted5nvp1po1r8el614r0&st=tr59i7cv&dl=2",
+  "download": "https://www.dropbox.com/scl/fi/x19bkogb6eaglsh7l23he/pf2e-gatewalkers-helper.zip?rlkey=bbk1tx3es0xhwudowkymg9ubp&st=rj9s4mg0&dl=1",
   "changelog": "https://github.com/reyzor1991/pf2e-gatewalkers-helper/blob/master/CHANGELOG.md",
   "relationships": {
     "systems": [
@@ -45,8 +45,8 @@
         "type": "system",
         "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
         "compatibility": {
-          "minimum": "5.0.2",
-          "verified": "6.1.0"
+          "minimum": "7.0.5",
+          "verified": "7.0.5"
         }
       }
     ],
